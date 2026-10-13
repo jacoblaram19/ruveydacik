@@ -1,12 +1,14 @@
 const photoCount=155,photoWall=document.querySelector('#photoWall');
 const pad=n=>String(n).padStart(3,'0');
 const photos=Array.from({length:photoCount},(_,i)=>`./assets/bg/bg-${pad(i+1)}.webp`);
-for(let r=0;r<3;r++){const row=document.createElement('div');row.className='photo-row';const set=photos.filter((_,i)=>i%3===r);[...set,...set].forEach((src,i)=>{const img=document.createElement('img');img.src=src;img.alt='';img.loading=i<14?'eager':'lazy';img.decoding='async';row.appendChild(img)});photoWall.appendChild(row)}
+for(let r=0;r<10;r++){const row=document.createElement('div');row.className='photo-row';const set=photos.filter((_,i)=>i%10===r);[...set,...set,...set].forEach((src,i)=>{const img=document.createElement('img');img.src=src;img.alt='';img.loading=i<30?'eager':'lazy';img.decoding='async';row.appendChild(img)});photoWall.appendChild(row)}
 
 const intro=document.querySelector('#intro'),main=document.querySelector('#main'),answerZone=document.querySelector('#answerZone'),noBtn=document.querySelector('#noBtn'),yesBtn=document.querySelector('#yesBtn');
-const mars=document.querySelector('#mars'),musicToggle=document.querySelector('#musicToggle');let escapeCount=0;
-function escapeNo(){const z=answerZone.getBoundingClientRect(),b=noBtn.getBoundingClientRect(),maxX=Math.max(8,z.width-b.width-8),maxY=Math.max(8,z.height-b.height-8);noBtn.style.right='auto';noBtn.style.left=`${Math.random()*maxX}px`;noBtn.style.top=`${Math.random()*maxY}px`;noBtn.style.transform=`rotate(${Math.random()*18-9}deg)`;escapeCount++;noBtn.textContent=escapeCount>4?'YAKALAYAMAZSIN :D':'HAYIR'}
-['pointerenter','pointerdown','focus','click'].forEach(name=>noBtn.addEventListener(name,e=>{e.preventDefault();escapeNo();noBtn.blur()}));
+const mars=document.querySelector('#mars'),musicToggle=document.querySelector('#musicToggle');let escapeCount=0,lastNoX=0,lastNoY=0;
+function escapeNo(bigJump=false){const b=noBtn.getBoundingClientRect(),pad=12,maxX=Math.max(pad,innerWidth-b.width-pad),maxY=Math.max(pad,innerHeight-b.height-pad);let x,y,tries=0;do{x=pad+Math.random()*(maxX-pad);y=pad+Math.random()*(maxY-pad);tries++}while(bigJump&&Math.hypot(x-lastNoX,y-lastNoY)<Math.min(innerWidth,innerHeight)*.42&&tries<12);lastNoX=x;lastNoY=y;noBtn.style.right='auto';noBtn.style.left=`${x}px`;noBtn.style.top=`${y}px`;noBtn.style.transform=`rotate(${Math.random()*22-11}deg)`;escapeCount++;noBtn.textContent=escapeCount>8?'YAKALAYAMAZSIN :D':'HAYIR'}
+['pointerenter','pointerdown','focus','click'].forEach(name=>noBtn.addEventListener(name,e=>{e.preventDefault();escapeNo(true);noBtn.blur()}));
+setTimeout(()=>escapeNo(false),350);
+setInterval(()=>{if(!document.body.classList.contains('entered'))escapeNo(false)},900);
 yesBtn.addEventListener('click',()=>{yesBtn.textContent='DOGRU CEVAP ✓';musicToggle.hidden=false;mars.play().catch(()=>{musicToggle.textContent='▶ MARS';musicToggle.setAttribute('aria-label','Muzigi oynat')});document.body.classList.add('entered');window.scrollTo({top:0,behavior:'auto'})});
 musicToggle.addEventListener('click',async()=>{if(mars.paused){await mars.play();musicToggle.textContent='II MARS';musicToggle.setAttribute('aria-label','Muzigi duraklat')}else{mars.pause();musicToggle.textContent='▶ MARS';musicToggle.setAttribute('aria-label','Muzigi oynat')}});
 
