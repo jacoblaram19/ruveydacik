@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#090909" />
+  <meta name="description" content="ruveydacik icin cok ciddi bir date raporu" />
+  <title>ruveydacik.exe</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <audio id="mars" src="./assets/besiktasmars.mp3" preload="auto" loop></audio>
+  <button class="music-toggle" id="musicToggle" hidden aria-label="Muzigi duraklat">II MARS</button>
+
+  <section class="intro" id="intro">
+    <div class="photo-wall" id="photoWall" aria-hidden="true"></div>
+    <div class="intro-shade"></div>
+    <div class="intro-copy">
+      <p class="eyebrow">ruveydacik.exe / guvenli olmayan guzellik algilandi</p>
+      <h1>BU KADAR GUZEL OLMAYA UTANMIYOMUSUN???</h1>
+      <div class="answer-zone" id="answerZone">
+        <button class="btn btn-yes" id="yesBtn">EVET</button>
+        <button class="btn btn-no" id="noBtn">HAYIR</button>
+      </div>
+      <p class="tiny">dogru cevap secilmeden sistem acilmaz.</p>
+    </div>
+  </section>
+
+  <main id="main" hidden>
+    <section class="panel report reveal">
+      <div class="panel-head"><span>DATE_REPORT_v1.0</span><span class="status"><i></i> calisiyor</span></div>
+      <h2>merhaba, ruveydacik.</h2>
+      <p class="lead">bugunku bulusmanin tamamen tarafsiz, bilimsel ve kesinlikle uydurulmamis sonuclari geldi.</p>
+      <div class="stats">
+        <article><span>kahve uyumu</span><strong>%96</strong></article>
+        <article><span>besiktas protokolu</span><strong>OK</strong></article>
+        <article><span>guzellik bug'i</span><strong>KRITIK</strong></article>
+        <article><span>tekrar gorusme</span><strong>?</strong></article>
+      </div>
+    </section>
+
+    <section class="date-proof reveal">
+      <div class="tape tape-one">BUGUNKU DATE</div>
+      <figure>
+        <img src="./assets/bugunkudate.webp" alt="Bugunku bulusmadan birlikte cekilen fotograf" />
+        <figcaption><span>kanit_001.jpg</span><strong>kamera acisi: supheli<br />ikili: tatli</strong></figcaption>
+      </figure>
+      <div class="tape tape-two">VALENIN GORUSU ALINAMADI</div>
+    </section>
+
+    <section class="tulip-scene reveal" aria-label="Animasyonlu lale demeti">
+      <p>biraz da cicek.exe calistiralim...</p>
+      <div class="bouquet" aria-hidden="true">
+        <div class="wrap"></div>
+        <div class="stem s1"><i></i></div><div class="stem s2"><i></i></div>
+        <div class="stem s3"><i></i></div><div class="stem s4"><i></i></div>
+        <div class="stem s5"><i></i></div><div class="stem s6"><i></i></div>
+        <div class="stem s7"><i></i></div>
+        <span class="tag">sanal ama niyet gercek ;)</span>
+      </div>
+    </section>
+
+    <section class="panel game-panel reveal">
+      <div class="panel-head"><span>MINI_GAME.exe</span><span id="scoreText">0 / 7</span></div>
+      <h2>ruveydacik radar testi</h2>
+      <p>7 tane siyah-beyaz kalbi yakala. bilim icin gerekli.</p>
+      <button class="btn game-start" id="gameStart">oyunu baslat</button>
+      <div class="arena" id="arena" hidden><button class="heart" id="heart" aria-label="Kalbi yakala">♥</button></div>
+      <p class="game-message" id="gameMessage" aria-live="polite"></p>
+    </section>
+
+    <section class="panel picker reveal locked" id="picker">
+      <div class="panel-head"><span>NEXT_DATE.config</span><span>secim bekleniyor</span></div>
+      <h2>sirada nerede valeden kacalim?</h2>
+      <div class="options" id="options">
+        <button data-choice="kahve">kahve</button><button data-choice="kore yemegi">kore yemegi</button>
+        <button data-choice="meksika yemegi">meksika yemegi</button><button data-choice="pub">pub</button>
+        <button data-choice="sinema">sinema</button>
+      </div>
+      <div class="result" id="result" hidden>
+        <span>SECIM KAYDEDILDI*</span><strong id="resultChoice"></strong>
+        <p>* backend yok. ekran goruntusu alip bana atman gerekiyor :D</p>
+      </div>
+      <p class="lock-note">once yukaridaki cok ciddi testi tamamla ↓</p>
+    </section>
+
+    <footer><span>made with kahve + panik + biraz javascript</span><strong>ruveydacik.exe</strong></footer>
+  </main>
+  <script src="./script.js"></script>
+</body>
+</html>
